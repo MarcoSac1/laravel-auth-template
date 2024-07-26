@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\HomeController as GuestHomeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +21,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
+Route::get('admin/secret-home', [AdminHomeController::class, 'index'])->name('admin.home')->middleware('auth');
