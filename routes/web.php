@@ -25,8 +25,8 @@ Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function(){
-        Route::get('secret-home', [AdminHomeController::class, 'index'])->name('home');
-        Route::get('user', [AdminHomeController::class ]);
+        //Rotte protette
+    // Route::get('secret-home', [AdminHomeController::class, 'index'])->name('home');
 
     }
 );
