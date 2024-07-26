@@ -22,4 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [GuestHomeController::class, 'index'])->name('home');
-Route::get('admin/secret-home', [AdminHomeController::class, 'index'])->name('admin.home')->middleware('auth');
+
+
+Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function(){
+        Route::get('secret-home', [AdminHomeController::class, 'index'])->name('home');
+        Route::get('user', [AdminHomeController::class ]);
+
+    }
+);
+
+
